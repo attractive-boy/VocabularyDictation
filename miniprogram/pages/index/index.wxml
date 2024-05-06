@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:if="{{value == 'index'}}" class="container-main">
+    <dictation-list />
+  </view>
+</view>
+<t-tab-bar safe-area-inset-bottom = "false" t-class="t-tab-bar" value="{{value}}" bindchange="onChange" split="{{false}}">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.value}}" icon="{{item.value == value ? item.selectedIcon : item.icon}}">
+    {{item.label}}
+  </t-tab-bar-item>
+</t-tab-bar>
+<l-popup show="{{showPopup}}" locked="{{true}}"> 
+<view class="popup-all">
+<view class="popup-container">
+<view class="popup-header"></view>
+<text class="popup-header-name">*******</text>
+<view class="popup-form">
+<view>
+<text class="select-text">教材选择</text>
+<text class="more">更多教材陆续更新中</text>
+<view class="people-bak {{selected}}"></view>
+<text class="people {{selected}}" bind:tap="selectPeople">人教版</text>
+<text class="update">待更新</text>
+<view class="ready">
+<text class="ready-text" bind:tap="close">确认</text></view>
+</view>
+</view>
+</view>
+</view>
+</l-popup>

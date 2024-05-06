@@ -1,0 +1,42 @@
+/* pages/loading/loading.wxss */
+.loading-image {
+  width: 221.15rpx;
+  height: 221.15rpx;
+  opacity: 1;
+  background: url(https://img.js.design/assets/img/65fe8dcc481fe963e2192afc.gif#ae2ec128fa045e456ad3ba47fe3d2ee1);
+  background-size: 100%;
+}
+
+.image {
+  width: 134.62rpx;
+  height: 134.62rpx;
+  opacity: 1;
+  margin: 42rpx 44rpx;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  /* 在主轴上居中 */
+  align-items: center;
+  /* 在交叉轴上居中 */
+  height: 100vh;
+  width: 100vw;
+}
+
+.icon-text {
+  left: 251.92rpx;
+  top: 671.15rpx;
+  width: 248.08rpx;
+  height: 61.54rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 34.62rpx;
+  font-weight: 500;
+  letter-spacing: 0rpx;
+  line-height: 48.46rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  vertical-align: top;
+
+}

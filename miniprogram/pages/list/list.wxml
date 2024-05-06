@@ -1,0 +1,44 @@
+<!--pages/list/list.wxml-->
+<view class="list">
+  <view class="header">
+    <view class="user-tip">
+      <view class="user-image"></view>
+      <view class="user-text">人教版</view>
+    </view>
+    <view class="header-img">
+    </view>
+  </view>
+  <view class="list-view">
+    <l-segment bind:linchange="changeTabs" l-tab-image-class="tab-image" has-line="{{false}}" l-class="segment-view" l-active-class="segment-active" activeKey="one">
+      <l-segment-item key="one" slot="one">
+        <view class="tab-item">
+          <view class="tab-content">年纪列表</view>
+          <view class="active-img"></view>
+          <view class="short-line"></view>
+        </view>
+      </l-segment-item>
+      <l-segment-item key="two" slot="two">
+        <view class="tab-item">
+          <view class="active-img"></view>
+          <view class="tab-content">上次位置</view>
+          <view class="line-container">
+            <view class="short-line"></view>
+          </view>
+
+        </view>
+      </l-segment-item>
+    </l-segment>
+    <view wx:if="{{activeTab == 'one'}}" class="book-container">
+      <view wx:for="{{booklist}}" wx:key="index" >
+      <view bind:tap="selectBook" id="{{item.param}}">
+        <view class="book-img" style="background-image: url({{item.backgroudImg}})"></view>
+        <view class="book-text">
+          <view class="text">{{item.bookTitle}}</view>
+          <view class="desc">教材同步/听写记忆</view>
+        </view>
+      </view>
+      </view>
+    </view>
+  </view>
+
+</view>

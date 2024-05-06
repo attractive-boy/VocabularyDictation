@@ -1,0 +1,220 @@
+/* pages/list/list.wxss */
+.user-tip {
+  left: 0rpx;
+  top: 140.38rpx;
+  width: 230.77rpx;
+  height: 57.69rpx;
+  opacity: 1;
+  border-radius: 407.69rpx;
+  background: rgba(253, 249, 237, 1);
+  border: 1.92rpx solid rgba(252, 212, 91, 1);
+  position: absolute;
+}
+
+.user-tip .user-image {
+  left: 23.08rpx;
+  top: -16rpx;
+  width: 88.46rpx;
+  height: 88.46rpx;
+  opacity: 1;
+  background: url('https://img.js.design/assets/img/65c90471f97fcf0c164406f5.png#e53afa74dfce14031895a6a6f6516976');
+  background-size: auto 100%;
+  position: absolute;
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.user-text {
+  left: 117.31rpx;
+  top: 10.92rpx;
+  width: 86.54rpx;
+  height: 31.7rpx;
+  opacity: 1;
+
+  border: 1.92rpx solid rgba(255, 255, 255, 1);
+
+  /** 文本1 */
+  font-size: 25rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 35rpx;
+  color: rgba(56, 56, 56, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+
+.header {
+  left: -11.54rpx;
+  top: 0rpx;
+  width: 761.54rpx;
+  height: 413.46rpx;
+  opacity: 1;
+  background: linear-gradient(170.23deg, rgba(107, 186, 255, 0.8) 0%, rgba(255, 249, 230, 0.8) 100%);
+  position: absolute;
+}
+
+.header-img {
+  left: 176.92rpx;
+  top: 55.77rpx;
+  width: 451.28rpx;
+  height: 369.23rpx;
+  opacity: 1;
+  background: url(https://img.js.design/assets/img/65fae9f8bd19fca7427cd78f.png#1bf51eee74abcd8833502b4ac0a066a4) no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+}
+
+.custom-tabs {
+  margin-bottom: 32rpx;
+}
+
+.list-view {
+  left: 23.08rpx;
+  top: 340.62rpx;
+  width: 705.77rpx;
+  opacity: 1;
+  border-radius: 57.69rpx 57.69rpx 0rpx 0rpx;
+  background: rgba(252, 212, 91, 1);
+  overflow: hidden;
+  position: absolute;
+  padding-bottom: 150rpx;
+}
+
+.t-tabs {
+  width: 705.77rpx;
+  height: 119.23rpx;
+  opacity: 1;
+  background: rgba(252, 212, 91, 1);
+}
+
+.t-tabs-items {
+  background: rgba(252, 212, 91, 1);
+}
+
+.segment-view {
+  width: 705.77rpx;
+  height: 119.23rpx;
+  opacity: 1;
+  border-radius: 57.69rpx 57.69rpx, 0rpx, 0rpx;
+  background: rgba(252, 212, 91, 1);
+  position: relative;
+}
+
+.tab-content {
+  width: 127.15rpx;
+  height: 33.3rpx;
+  opacity: 0.5;
+  /** 文本1 */
+  font-size: 30.77rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 43.08rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  vertical-align: top;
+
+}
+
+.segment-active .tab-content {
+  left: 97rpx;
+  top: 38rpx;
+  width: 162.91rpx;
+  height: 42.07rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 38.46rpx;
+  font-weight: 500;
+  letter-spacing: 0rpx;
+  line-height: 53.85rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  vertical-align: top;
+  z-index: 1000;
+  background-color:  rgba(252, 212, 91, 1);
+}
+
+.line-container {
+  width: 162.91rpx;
+}
+
+.segment-active .short-line {
+  margin: 0 auto;
+  margin-top: 15rpx;
+  width: 24.29rpx;
+  height: 3.51rpx;
+  opacity: 1;
+  border-radius: 298.08rpx;
+  background: rgba(0, 0, 0, 1);
+}
+
+.segment-active .active-img {
+  position: absolute;
+  left: 85rpx;
+  top: 34rpx;
+  width: 62.04rpx;
+  height: 63.1rpx;
+  opacity: 0.8;
+  background: linear-gradient(122.54deg, rgba(255, 255, 255, 100) 0%, rgba(255, 255, 255, 0.01) 100%);
+  transform: translateY(-15rpx);
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.book-img {
+  left: 0rpx;
+  top: 0rpx;
+  width: 317.31rpx;
+  height: 326.92rpx;
+  opacity: 1;
+  border-radius: 19.23rpx;
+  background-size: 100%;
+
+}
+
+.book-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.book-text {
+  transform: translateY(-20rpx);
+  width: 317.31rpx;
+  opacity: 1;
+  border-radius: 0rpx 0rpx 19.23rpx 19.23rpx;
+  background: rgba(255, 255, 255, 1);
+}
+
+.text {
+  padding-left: 10rpx;
+  padding-top: 13rpx;
+
+  height: 124.53rpx;
+  opacity: 1;
+  border-radius: 0rpx 0rpx, 19.23rpx, 19.23rpx;
+}
+
+.desc {
+  padding-left: 10rpx;
+  transform: translateY(-10rpx);
+  width: 186.54rpx;
+  height: 40.38rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 21.15rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 29.62rpx;
+  color: rgba(166, 166, 166, 1);
+  text-align: left;
+  vertical-align: top;
+
+}
+

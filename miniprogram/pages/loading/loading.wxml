@@ -1,0 +1,9 @@
+<!--pages/loading/loading.wxml-->
+<view>
+  <view class="container">
+    <view class="loading-image">
+    <image class="image" src="https://img.js.design/assets/img/661e3da89875ee0fb31305f7.png#ca4043ab7773def22cab5207e71d8d42" mode=""/>
+    </view>
+    <text class="icon-text">小学语文趣听写</text>
+  </view>
+</view>

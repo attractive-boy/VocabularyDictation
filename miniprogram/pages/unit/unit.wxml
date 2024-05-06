@@ -1,0 +1,46 @@
+<!--pages/unit/unit.wxml-->
+<wxs module="filter" src="./unit.wxs"></wxs>
+<view class="head-bak">
+  <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+  <view class="user-tip">
+    <view class="user-image"></view>
+    <view class="user-text"><text class="text1">{{grade}}年级 </text><text class="text2">{{term}}册</text>
+      <view style="transform: translateY(-20rpx);"><text class="text3">人教版</text></view>
+    </view>
+  </view>
+  <view class="header-img">
+  </view>
+</view>
+<view class="list-view">
+  <view class="wrapper">
+    <t-collapse value="{{activeValues}}" bind:change="handleChange" t-class="collapse" wx:for="{{unitlist}}" wx:key="index">
+      <t-collapse-panel header="第{{filter.numberToChinese(index+1)}}单元" value="{{index}}" expandIcon t-class="collapse-panel" style="background: rgba(0, 0, 0, 0)">
+        <view style="height: 5rpx;"></view>
+        <view wx:for="{{item}}" wx:key="index" wx:for-item="lessons" wx:for-index="idx">
+          <view class="lin-collapse">
+            <view class="col-title">{{lessons.lessonName}} {{}}
+              <view class="col-num">共{{lessons.wordCount}}个字词</view>
+            </view>
+            <view class="col-arrow" data-index="{{lessons.key}}" bind:tap="toggleArrow">
+              <l-icon l-class="lin-icon" name="up" wx:if="{{arrowlist[lessons.key] == 1}}"></l-icon>
+              <l-icon l-class="lin-icon" name="down" wx:else></l-icon>
+            </view>
+            <view class="select-all" data-index="{{lessons.key}}" bind:tap="selectallfun">
+              <view class="select-all-img {{selectall[lessons.key] == 1 ? 'all-active' : ''}}"></view>
+              <view class="select-all-txt">全选</view>
+            </view>
+            <view class="font-view">
+              <view class="font-words">
+              <view wx:for="{{lessons.words}}" wx:key="index" wx:for-item="word" wx:for-index="fontid" class="words" data-index="{{lessons.key}}" data-fontidx="{{word.id}}" data-length = "{{lessons.wordCount}}" bind:tap="selectfont">
+                <view class="font-bak" wx:for="{{word.word}}" wx:key="index" ><text class="font-word" style="{{(selectall[lessons.key] == 1) || (selectindex[lessons.key].length > 0 && selectindex[lessons.key][word.id] == 1) ? 'color: black' : '' }}">{{item}}</text></view>
+              </view>
+              </view>
+            </view>
+            <view class="submit-btn"><text>听写</text></view>
+          </view>
+        </view>
+      </t-collapse-panel>
+    </t-collapse>
+  </view>
+
+</view>

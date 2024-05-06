@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-segment":"lin-ui/segment/index",
+    "l-segment-item":"lin-ui/segment-item/index"
+  }
+}
