@@ -1,0 +1,18 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+    <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+    <view class="feedback-title">
+    关于
+    </view>
+    <view class="body-img">
+    </view>
+    <view class="body-name">
+    小学语文趣听写
+    </view>
+    <view class="body-version">小程序：00000</view>
+    <view class="body-list">
+    <l-list l-class="list-item" title="隐私政策" />
+    <l-list l-class="list-item" title="儿童隐私政策"  />
+    <l-list l-class="list-item" title="服务协议"  />
+    </view>
+</view>

@@ -1,0 +1,131 @@
+/* pages/feedback/feedback.wxss */
+.navbar .t-navbar__content {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.container {
+  width: 750rpx;
+  height: 100%;
+  opacity: 1;
+  background: rgba(253, 249, 237, 0.6);
+
+  left: 0rpx;
+  top: 3.85rpx;
+  width: 750rpx;
+  height: 1619.23rpx;
+  opacity: 1;
+  background: rgba(253, 249, 237, 0.6);
+
+  left: 0rpx;
+  top: 3.85rpx;
+  width: 750rpx;
+  height: 1619.23rpx;
+  opacity: 1;
+  background: rgba(253, 249, 237, 0.6);
+
+  left: 0rpx;
+  top: 3.85rpx;
+  width: 750rpx;
+  height: 1619.23rpx;
+  opacity: 1;
+  background: rgba(253, 249, 237, 0.6);
+}
+
+.feedback-title {
+  left: 325rpx;
+  top: 119.23rpx;
+  width: 101.92rpx;
+  height: 65.38rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 46.15rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 64.62rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+
+.feedback-content {
+  left: 0rpx;
+  top: 213.46rpx;
+  width: 750rpx;
+  height: 376.92rpx;
+  opacity: 1;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+}
+
+.feedback-text {
+  left: 81.77rpx;
+  top: 29.31rpx;
+  width: 388.46rpx;
+  height: 38.46rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 34.62rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 48.46rpx;
+  color: rgba(128, 128, 128, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+
+.feedback-submit {
+  left: 0rpx;
+  top: 619.23rpx;
+  width: 750rpx;
+  height: 86.54rpx;
+  opacity: 1;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+}
+
+.feedback-submit-text {
+  left: 340.38rpx;
+  top: 25.23rpx;
+  width: 71.15rpx;
+  height: 38.46rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 34.62rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 48.46rpx;
+  color: rgba(128, 128, 128, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+
+.body-list {
+  left: 0rpx;
+  top: 210rpx;
+  width: 750rpx;
+  height: 400rpx;
+  opacity: 1;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+}
+
+.list-item {
+  margin-left: 56rpx;
+  height: 100rpx;
+  width: 650rpx !important;
+  opacity: 1;
+  border-bottom: none;
+}
+.l-content-class {
+  /** 文本1 */
+  font-size: 34.62rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 48.46rpx;
+  color: rgba(56, 56, 56, 1);
+  text-align: left;
+  vertical-align: top;
+}

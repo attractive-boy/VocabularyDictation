@@ -3,7 +3,8 @@
     "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
     "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item",
     "dictation-list": "../list/list",
-    "l-popup":"lin-ui/popup/index"
+    "l-popup":"lin-ui/popup/index",
+    "me": "../me/me"
   },
   "navigationBarBackgroundColor": "#fff"
 }

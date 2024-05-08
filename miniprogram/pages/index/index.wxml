@@ -3,6 +3,9 @@
   <view wx:if="{{value == 'index'}}" class="container-main">
     <dictation-list />
   </view>
+  <view class="container-main" wx:else>
+    <me />
+  </view>
 </view>
 <t-tab-bar safe-area-inset-bottom = "false" t-class="t-tab-bar" value="{{value}}" bindchange="onChange" split="{{false}}">
   <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.value}}" icon="{{item.value == value ? item.selectedIcon : item.icon}}">

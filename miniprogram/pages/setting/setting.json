@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "l-list":"lin-ui/list/index"
+  }
+}

@@ -32,7 +32,9 @@
             <view class="font-view">
               <view class="font-words">
               <view wx:for="{{lessons.words}}" wx:key="index" wx:for-item="word" wx:for-index="fontid" class="words" data-index="{{lessons.key}}" data-fontidx="{{word.id}}" data-length = "{{lessons.wordCount}}" bind:tap="selectfont">
-                <view class="font-bak" wx:for="{{word.word}}" wx:key="index" ><text class="font-word" style="{{(selectall[lessons.key] == 1) || (selectindex[lessons.key].length > 0 && selectindex[lessons.key][word.id] == 1) ? 'color: black' : '' }}">{{item}}</text></view>
+              <view wx:for="{{word.word}}" wx:key="index">
+                <view class="font-bak" ><text class="font-word" style="{{(selectall[lessons.key] == 1) || (selectindex[lessons.key].length > 0 && selectindex[lessons.key][word.id] == 1) ? 'color: black' : '' }}">{{item}}</text></view>
+            </view>
               </view>
               </view>
             </view>

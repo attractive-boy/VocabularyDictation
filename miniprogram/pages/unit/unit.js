@@ -25,7 +25,7 @@ Page({
           ["吃水不忘挖井人", "我多想去看看", "四个太阳", "语文园地二"],
           ["小公鸡和小鸭子", "树和喜鹊", "怎么都快乐", "静夜思", "夜色", "端午粽", "彩虹", "语文园地四"],
           ["动物儿歌", "古对今", "操场上", "人之初", "语文园地五"],
-          ["古诗二首", "荷叶圆圆", "要下雨了", "语文天地六"],
+          ["古诗二首", "荷叶圆圆", "要下雨了"],
           ["文具的家", "一分钟", "动物王国开大会", "小猴子下山", "语文园地七"],
           ["棉花姑娘", "咕咚", "小壁虎借尾巴", "语文园地八"]
         ]
@@ -277,13 +277,11 @@ Page({
     if(list[index].length == 0){
       list[index] = new Array(length).fill(0);
     }
-
-    if(list[index][fontIdx] == 0){
+    if(list[index][fontIdx] == 0 || list[index][fontIdx] == undefined){
       list[index][fontIdx] = 1
     }else{
       list[index][fontIdx] = 0
     }
-
     this.setData({
       selectindex : list
      })
