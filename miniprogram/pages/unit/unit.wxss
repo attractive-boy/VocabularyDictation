@@ -344,3 +344,21 @@
   vertical-align: top;
   position: absolute;
 }
+
+.highter{
+  height: 272rpx;
+}
+.lin-highter{
+  height: 400.31rpx;
+}
+.btn-active{
+  right: 13.54rpx;
+  bottom: 10.85rpx;
+  width: 122.83rpx;
+  height: 38.46rpx;
+opacity: 1;
+border-radius: 409.62rpx;
+background: url(https://img.js.design/assets/img/661789f89875ee0fb3dcad2b.png#49029d68cb8bf13560bce5d885e125eb);
+background-size: cover;
+position: absolute;
+}

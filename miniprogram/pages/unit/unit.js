@@ -236,6 +236,8 @@ Page({
     // 获取目标元素的数据绑定值 data-arrow
     var index = target.dataset.index;
     var list = this.data.arrowlist;
+    var lessonId = target.dataset.lessonid;
+    var listindex = target.dataset.listindex;
     // 切换箭头状态
     if (list[index] == 0) {
       // 如果当前箭头是向上的，则切换为向下
@@ -244,6 +246,38 @@ Page({
       // 如果当前箭头是向下的，则切换为向上
       list[index] = 0;
     }
+    var unitlists = this.data.unitlist;
+    const that = this;
+    //获取更多字
+    wx.request({
+      url: `https://course.igetcool.com/api/dictation/lesson/details?lessonId=${lessonId}&typeList=`,
+      header: {
+        'Host': 'course.igetcool.com',
+        'Connection': 'keep-alive',
+        'xweb_xhr': '1',
+        'App-Wechat-UnionId': 'oDQBv07hD-oxDgtUZ2e9zqFoPABI',
+        'App-User-Pid': '0',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Referer': 'https://servicewechat.com/wx3fc3618ecdedcbac/24/page-frame.html',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'zh-CN,zh;q=0.9'
+      },
+      method: 'GET',
+      success: function(res) {
+        // 请求成功的处理逻辑
+        const words = res.data.data.words;
+        unitlists[listindex[0]][listindex[1]].words = words;
+        that.setData({
+          unitlist: unitlists
+        })
+      },
+      fail: function(err) {
+        // 请求失败的处理逻辑
+        console.error(err);
+      }
+    });
+    
     this.setData({
       arrowlist : list
     })
@@ -285,5 +319,25 @@ Page({
     this.setData({
       selectindex : list
      })
+  },
+  toListen(event){
+    // 获取点击事件的目标元素
+    var target = event.currentTarget;
+    // 获取目标元素的数据绑定值 
+    var index = target.dataset.key;
+    var lessonsid = target.dataset.lessonid;
+    let indexes = [];
+
+    for (let i = 0; i < this.data.selectindex[index].length; i++) {
+      if (this.data.selectindex[index][i] === 1) {
+        indexes.push(i);
+      }
+    }
+    // 构造跳转路径，并将参数传递过去
+    var url = '/pages/listen/listen?all=' + this.data.selectall[index] + '&lessonid=' + lessonsid + '&index=' + indexes.join('-');
+    // console.log(indexes.join('-'))
+    wx.navigateTo({
+        url: url
+    });
   }
 })
