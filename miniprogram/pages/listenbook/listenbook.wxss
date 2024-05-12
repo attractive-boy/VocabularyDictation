@@ -1,0 +1,90 @@
+/* pages/listenbook/listenbook.wxss */
+.listenbook-header {
+  left: -5.77rpx;
+  top: -55.77rpx;
+  width: 761.54rpx;
+  height: 413.46rpx;
+  opacity: 1;
+  background: linear-gradient(
+    170.23deg,
+    rgba(107, 186, 255, 0.8) 0%,
+    rgba(255, 249, 230, 0.8) 100%
+  );
+  position: absolute;
+}
+.listenbook-title {
+  left: 259.62rpx;
+  top: 132.69rpx;
+  width: 232.69rpx;
+  height: 67.31rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 46.15rpx;
+  font-weight: 500;
+  letter-spacing: 0rpx;
+  line-height: 64.62rpx;
+  color: rgba(2, 0, 3, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+.navbar .t-navbar__content {
+  background-color: rgba(0, 0, 0, 0);
+}
+.listenbook-clouds {
+  left: 63.46rpx;
+  top: 75rpx;
+  width: 625rpx;
+  height: 350rpx;
+  opacity: 1;
+  background: url(https://img.js.design/assets/img/65fbe1a37855d0f7630142ec.png#12eaefa8a0359942a17d28f8463acdb2);
+  background-size: cover;
+  position: absolute;
+}
+.book-icon {
+  right: 31rpx;
+  top: 58rpx;
+  width: 86.54rpx;
+  height: 103.85rpx;
+  opacity: 1;
+  position:absolute;
+  background: url(https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%206.png?sign=39f41fe01dea80806fa26adef5aad55a&t=1715151296);
+  background-size:cover;
+}
+.listenbook-content{
+    left: 0rpx;
+top: 232.69rpx;
+width: 750rpx;
+height: 1390.38rpx;
+opacity: 1;
+border-radius: 57.69rpx 57.69rpx 0rpx 0rpx;
+background: rgba(253, 249, 237, 1);
+position:absolute;
+}
+.listenbook-content-png{
+    left: 30.77rpx;
+top: 42rpx;
+width: 687.46rpx;
+height: 976.92rpx;
+opacity: 1;
+background: url(https://img.js.design/assets/img/661e3e6e4eb2224151693763.png#526355d3ab2231e06724ad128ae8927e);
+background-size:cover;
+box-shadow: 0rpx 3.85rpx 7.69rpx  rgba(255, 141, 26, 0.4);
+position:absolute;
+}
+.listenbook-download{
+left: 292.31rpx;
+top: 1286.54rpx;
+width: 165.38rpx;
+height: 67.31rpx;
+opacity: 1;
+/** 文本1 */
+font-size: 38.46rpx;
+font-weight: 400;
+letter-spacing: 0rpx;
+line-height: 53.85rpx;
+color: rgba(56, 56, 56, 1);
+text-align: left;
+vertical-align: top;
+position:absolute;
+}

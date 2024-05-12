@@ -38,7 +38,7 @@
               </view>
               </view>
             </view>
-            <view class="submit-btn {{(selectall[lessons.key] == 1) || (selectindex[lessons.key].length > 0 && filter.hasone(selectindex[lessons.key])) ? 'btn-active' : ''}}" bind:tap="toListen" data-key="{{lessons.key}}" data-lessonid="{{lessons.lessonId}}"><text>听写</text></view>
+            <view class="submit-btn {{(selectall[lessons.key] == 1) || (selectindex[lessons.key].length > 0 && filter.hasone(selectindex[lessons.key])) ? 'btn-active' : ''}}" bind:tap="toListen" data-key="{{lessons.key}}" data-lessonid="{{lessons.lessonId}}"><text class="text">听写</text></view>
           </view>
         </view>
       </t-collapse-panel>

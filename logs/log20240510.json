@@ -1,0 +1,6 @@
+{"@t":"2024-05-10T02:18:59.8324588Z","@mt":": Started","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}
+{"@t":"2024-05-10T02:19:00.0795684Z","@mt":"Portal Reboot!","@l":"Warning","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}
+{"@t":"2024-05-10T02:19:00.0915881Z","@mt":": Ended (00:00:00.0110498)","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}
+{"@t":"2024-05-10T07:56:40.7970265Z","@mt":": Started","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}
+{"@t":"2024-05-10T07:56:40.9180120Z","@mt":"Portal Reboot!","@l":"Warning","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}
+{"@t":"2024-05-10T07:56:40.9206291Z","@mt":": Ended (00:00:00.0027572)","Application":"portal.localhost","InstanceId":"KG-XXGLB-LIC\\Administrator|KG-XXGLB-LIC|10.10.124.228","EnvironmentName":"Production"}

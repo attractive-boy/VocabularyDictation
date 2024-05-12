@@ -1,0 +1,18 @@
+<!--pages/listenbook/listenbook.wxml-->
+<view>
+    <view class="listenbook-header">
+        <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+        <view class="listenbook-title">
+            听写本下载
+        </view>
+        <view class="listenbook-clouds">
+            <view class="book-icon"></view>
+        </view>
+    </view>
+    <view class="listenbook-content">
+        <view class="listenbook-content-png"></view>
+    </view>
+    <view class="listenbook-download">
+    下载模板
+    </view>
+</view>
