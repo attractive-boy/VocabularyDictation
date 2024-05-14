@@ -1,0 +1,38 @@
+<!--pages/result/result.wxml-->
+<view class="container">
+  <view class="headback"></view>
+  <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+  <text class="title">本次分析</text>
+  <view class="clouds"></view>
+  <view class="container-container">
+    <view class="listen-book">
+      <view bind:tap="selectall">
+      <view class="selectall-icon {{ selectall ? 'active' : '' }}"></view>
+      <text class="selectall-text">错字全选</text>
+      <view class="relisten-back" bind:tap="relisten">
+      <text class="relisten-text">重新听写</text>
+      </view>
+    </view>
+    </view>
+    <text class="listenbook-titie">听写本</text>
+    <view class="listenbook-result">
+      <text class='right'>正确</text>
+      <view class="fonts">
+        <view wx:for="{{rightwords}}" wx:key="index" class="font-bak">
+          <text class="font-text-right">{{item.word}}</text>
+        </view>
+      </view>
+      <text class='wrong'>错误</text>
+      <view class="fonts">
+        <view class="font-bak" wx:for="{{wrongwords}}" wx:key="index" data-idx="{{index}}" bind:tap="selectWrong">
+          <text class="font-text-wrong">{{item.word}}</text>
+          <view class="select-listen {{selectall || item.selected ? 'active' : ''}}"></view>
+        </view>
+      </view>
+      
+    </view>
+
+    
+  </view>
+
+</view>

@@ -6,16 +6,20 @@ Page({
    */
   data: {
     showPopup: true,
-    selected:"",
-    selected_update:"",
-    pause:true,
-    words:[],
+    selected: "",
+    selected_update: "",
+    pause: true,
+    words: [],
     index: 0,
-    readCount:2,
-    readSpace:2,
-    readOrder:1,
-    showSetting:false,
-    Image:''
+    readCount: 2,
+    readSpace: 2,
+    readOrder: 1,
+    showSetting: false,
+    Image: '',
+    type:'write',
+    showhelp:false,
+    helpInfo:{},
+    showresult:false
   },
 
   /**
@@ -23,8 +27,19 @@ Page({
    */
   onLoad(options) {
     console.log(options)
-    const { all, lessonid, index } = options
+    const {
+      all,
+      lessonid,
+      index,
+      relisten
+    } = options
     const that = this
+    if(relisten){
+      this.setData({
+        words : getApp().globalData.listenwords
+      })
+      return
+    }
     // 发送请求
     //获取更多字
     wx.request({
@@ -42,20 +57,20 @@ Page({
         'Accept-Language': 'zh-CN,zh;q=0.9'
       },
       method: 'GET',
-      success: function(res) {
+      success: function (res) {
         // 请求成功的处理逻辑
         const words = res.data.data.words;
         console.log(res.data.data)
         let word = [];
-        if(all != '1'){
+        if (all != '1') {
           const indexs = index.split("-")
           // 只需要 index 中 的
-          for(var i = 0; i < words.length; i++){
-            if(indexs.includes(words[i].id.toString())){
+          for (var i = 0; i < words.length; i++) {
+            if (indexs.includes(words[i].id.toString())) {
               word.push(words[i]);
             }
           }
-        }else{
+        } else {
           word = words;
         }
         console.log(word)
@@ -63,7 +78,7 @@ Page({
           words: word
         })
       },
-      fail: function(err) {
+      fail: function (err) {
         // 请求失败的处理逻辑
         console.error(err);
       }
@@ -120,57 +135,79 @@ Page({
   },
   selectPeople(event) {
     this.setData({
-      selected:"selected",
-      selected_update:""
+      selected: "selected",
+      selected_update: ""
     })
   },
   selectUpdate(event) {
     this.setData({
-      selected_update:"selected",
-      selected:""
+      selected_update: "selected",
+      selected: ""
     })
   },
-  close(){
+  close() {
     this.setData({
-      showPopup:false
+      showPopup: false
     })
   },
   // 监听子组件触发的自定义事件，接收签名图片数据
   handleSignatureData: function (e) {
     const signatureImage = e.detail.image;
     this.setData({
-      Image:signatureImage
+      Image: signatureImage
     })
     console.log(signatureImage)
   },
-  setting(){
+  setting() {
     this.setData({
-      showSetting:true
+      showSetting: true
     })
   },
-  closeSetting(){
+  closeSetting() {
     this.setData({
-      showSetting:false
+      showSetting: false
     })
   },
-  pre(){
-    if(this.data.index==0){
+  pre() {
+    if (this.data.index == 0) {
       return
     }
     this.setData({
-      index:this.data.index-1
+      index: this.data.index - 1
     })
   },
-  next(){
+  next() {
     const component = this.selectComponent('#signature');
     component.canvasClear();
-
+    const imageBase64 = this.data.Image.replace(/^data:image\/\w+;base64,/, '')
     //判断当前图片是否正确
-    if(this.data.index==this.data.words.length-1){
-      return
-    }
-    this.setData({
-      index:this.data.index+1
+    // 使用微信小程序的 wx.request() 发送网络请求
+    const that = this
+    wx.cloud.callFunction({
+      name: 'getimgcontext',
+      data: {
+        imageData: imageBase64
+      },
+      success: res => {
+        console.log('云函数调用成功', res)
+        let word = that.data.words
+        let idx = that.data.index
+        word[idx].writeImg = that.data.Image
+        word[idx].isRight = res.result.result?.TextDetections[0].DetectedText == word[idx].word
+        console.log('word====>', word)
+        if (idx == word.length - 1) {
+          that.setData({
+            showresult:true
+          })
+        } else {
+          that.setData({
+            index: idx + 1
+          })
+        }
+      },
+      fail: err => {
+        console.error('云函数调用失败', err)
+      }
     })
   },
   addtocollection(event) {
@@ -205,4 +242,47 @@ Page({
     }
 }
 
+  play(event) {
+    const audio = event.currentTarget.dataset.audio;
+    const innerAudioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: true // 是否使用 WebAudio 作为底层音频驱动，默认关闭。对于短音频、播放频繁的音频建议开启此选项，开启后将获得更优的性能表现。由于开启此选项后也会带来一定的内存增长，因此对于长音频建议关闭此选项
+    })
+    innerAudioContext.src = audio
+    innerAudioContext.play() // 播放
+    //innerAudioContext.destroy()
+  },
+  help(event) {
+    const that = this
+    wx.cloud.callFunction({
+      name: 'getwordinfo', // 云函数名称
+      data: {
+        word: that.data.words[that.data.index].word
+      },
+      success: res => {
+        console.log('云函数调用成功', res.result)
+        // 在这里处理云函数返回的结果
+        this.setData({
+          showhelp:true,
+          helpInfo: res.result[0]
+        })
+      },
+      fail: err => {
+        console.error('云函数调用失败', err)
+        // 在这里处理调用失败的情况
+      }
+    })
+
+  },
+  closehelp(event){
+    this.setData({
+      showhelp:false
+    })
+  },
+  toResult(event){
+    getApp().globalData.listenwords = this.data.words
+    // 跳转到另一个页面
+    wx.navigateTo({
+      url: '/pages/result/result'
+    })
+  }
 })
