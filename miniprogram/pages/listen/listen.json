@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "l-popup":"lin-ui/popup/index",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "write-panel": "../write/write",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
+  }
+}

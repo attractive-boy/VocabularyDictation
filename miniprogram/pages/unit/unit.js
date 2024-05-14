@@ -25,7 +25,7 @@ Page({
           ["吃水不忘挖井人", "我多想去看看", "四个太阳", "语文园地二"],
           ["小公鸡和小鸭子", "树和喜鹊", "怎么都快乐", "静夜思", "夜色", "端午粽", "彩虹", "语文园地四"],
           ["动物儿歌", "古对今", "操场上", "人之初", "语文园地五"],
-          ["古诗二首", "荷叶圆圆", "要下雨了", "语文天地六"],
+          ["古诗二首", "荷叶圆圆", "要下雨了"],
           ["文具的家", "一分钟", "动物王国开大会", "小猴子下山", "语文园地七"],
           ["棉花姑娘", "咕咚", "小壁虎借尾巴", "语文园地八"]
         ]
@@ -236,6 +236,8 @@ Page({
     // 获取目标元素的数据绑定值 data-arrow
     var index = target.dataset.index;
     var list = this.data.arrowlist;
+    var lessonId = target.dataset.lessonid;
+    var listindex = target.dataset.listindex;
     // 切换箭头状态
     if (list[index] == 0) {
       // 如果当前箭头是向上的，则切换为向下
@@ -244,6 +246,38 @@ Page({
       // 如果当前箭头是向下的，则切换为向上
       list[index] = 0;
     }
+    var unitlists = this.data.unitlist;
+    const that = this;
+    //获取更多字
+    wx.request({
+      url: `https://course.igetcool.com/api/dictation/lesson/details?lessonId=${lessonId}&typeList=`,
+      header: {
+        'Host': 'course.igetcool.com',
+        'Connection': 'keep-alive',
+        'xweb_xhr': '1',
+        'App-Wechat-UnionId': 'oDQBv07hD-oxDgtUZ2e9zqFoPABI',
+        'App-User-Pid': '0',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Referer': 'https://servicewechat.com/wx3fc3618ecdedcbac/24/page-frame.html',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'zh-CN,zh;q=0.9'
+      },
+      method: 'GET',
+      success: function(res) {
+        // 请求成功的处理逻辑
+        const words = res.data.data.words;
+        unitlists[listindex[0]][listindex[1]].words = words;
+        that.setData({
+          unitlist: unitlists
+        })
+      },
+      fail: function(err) {
+        // 请求失败的处理逻辑
+        console.error(err);
+      }
+    });
+    
     this.setData({
       arrowlist : list
     })
@@ -277,15 +311,33 @@ Page({
     if(list[index].length == 0){
       list[index] = new Array(length).fill(0);
     }
-
-    if(list[index][fontIdx] == 0){
+    if(list[index][fontIdx] == 0 || list[index][fontIdx] == undefined){
       list[index][fontIdx] = 1
     }else{
       list[index][fontIdx] = 0
     }
-
     this.setData({
       selectindex : list
      })
+  },
+  toListen(event){
+    // 获取点击事件的目标元素
+    var target = event.currentTarget;
+    // 获取目标元素的数据绑定值 
+    var index = target.dataset.key;
+    var lessonsid = target.dataset.lessonid;
+    let indexes = [];
+
+    for (let i = 0; i < this.data.selectindex[index].length; i++) {
+      if (this.data.selectindex[index][i] === 1) {
+        indexes.push(i);
+      }
+    }
+    // 构造跳转路径，并将参数传递过去
+    var url = '/pages/listen/listen?all=' + this.data.selectall[index] + '&lessonid=' + lessonsid + '&index=' + indexes.join('-');
+    // console.log(indexes.join('-'))
+    wx.navigateTo({
+        url: url
+    });
   }
 })

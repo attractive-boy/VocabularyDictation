@@ -1,5 +1,8 @@
 // app.js
 App({
+  globalData: {
+    listenwords: {} // 定义一个全局变量用来存储大对象
+  },
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');

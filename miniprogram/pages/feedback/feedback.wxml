@@ -1,0 +1,13 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+    <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+    <view class="feedback-title">
+    意见反馈
+    </view>
+    <view class="feedback-content">
+    <text class="feedback-text">请留下你宝贵的意见</text>
+    </view>
+    <view class="feedback-submit">
+    <text class="feedback-submit-text">提交</text>
+    </view>
+</view>

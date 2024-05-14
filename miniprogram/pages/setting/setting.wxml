@@ -1,0 +1,13 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+    <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+    <view class="feedback-title">
+    设置
+    </view>
+    <view class="body-list">
+    <l-list l-class="list-item" title="账号与安全" />
+    <l-list l-class="list-item" title="听写设置"  />
+    <l-list l-class="list-item" title="用户协议"  />
+    <l-list l-class="list-item" title="举报投诉" />
+    </view>
+</view>

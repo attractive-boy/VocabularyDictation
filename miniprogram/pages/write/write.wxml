@@ -1,0 +1,4 @@
+ <!-- 签名画布 -->
+ <canvas class="canvas .signature-container" id="signature-board" disable-scroll="true" 
+     bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" type="2d">
+</canvas>

@@ -1,0 +1,155 @@
+<!--pages/listen/listen.wxml-->
+<view class="container">
+  <l-popup show="{{showPopup}}" locked="{{true}}">
+    <view class="popup-all">
+      <view class="popup-container">
+        <view class="popup-header"></view>
+        <text class="popup-header-name">请选择你要听写的方式</text>
+        <view class="popup-form">
+          <view>
+            <text wx:if="{{selected_update != ''}}" class="select-text">个人主页可下载<text class="select-text-blod">听写本</text>哦~</text>
+            <view class="people-bak {{selected}}"></view>
+            <view class="update-bak {{selected_update}}"></view>
+            <text class="people {{selected}}" bind:tap="selectPeople">屏幕手写</text>
+            <text class="update {{selected_update}}" bind:tap="selectUpdate">仅听写</text>
+            <view class="ready">
+              <text class="ready-text" bind:tap="close">我准备好了</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </l-popup>
+
+  <view class="listen-bak">
+    <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+    <view class="listen-title">{{words[index].lessonName}}</view>
+    <view class="listen-desc">
+      共{{words.length}}个字
+    </view>
+    <view class="listen-setting" bind:tap="setting">
+
+    </view>
+    <view class="setting-text" bind:tap="setting">设置</view>
+    <view class="listen-clouds">
+    </view>
+    <view class="listen-content" wx:if="{{type == 'write'}}">
+      <view class="listen-content-png">
+        <text class="write-text">规范写法</text>
+        <view class="write-pinyin"><text class="write-pinyin-content">{{words[index].pinyin}}</text></view>
+        <view class="collection"></view>
+        <view class="write-view">
+          <write-panel id="signature" bind:signatureData="handleSignatureData"></write-panel>
+        </view>
+        <text class="write-notes">写在田字格内</text>
+        <view class="tips" bind:tap="help"><text class="tips-text">提示</text></view>
+      </view>
+
+      <view class="oprater">
+        <view class="oprater-progress">
+          <view class="oprater-progress-block" style="{{ 'width:' + (528.85/words.length * (index+1)) + 'rpx' }}"></view>
+          <view class="oprater-progress-runed" style="{{ 'margin-left:' + (528.85/words.length * (index)) + 'rpx' }}"></view>
+        </view>
+
+        <text class="progress-text">{{index + 1}}/{{words.length}}</text>
+        <view class="oprater-left {{index == 0 ? 'noleft' : ''}}" bindtap="pre"></view>
+        <view class="oprater-continue" wx:if="pause" bind:tap="play" data-audio="{{words[index].audioUrl}}"></view>
+        <view class="oprater-pause" wx:else></view>
+        <view class="oprater-right {{index == words.length - 1 ? 'noright' : ''}}" bind:tap="next"></view>
+      </view>
+    </view>
+    <view class="listen-content" wx:if="{{showhelp == true}}">
+      <view class="backpic"></view>
+      <view class='word-back'></view>
+      <viwe class="word" style="background: url({{words[index].writeUrl}});"></viwe>
+      <view class="close" bind:tap="closehelp"></view>
+      <view class='bushou'>部首：{{helpInfo.radical}}</view>
+      <view class='bihua'>笔画：{{helpInfo.stroke}}</view>
+      <view class='jiegou'>结构：{{helpInfo.structure}}</view>
+      <view class="interpretation">基本释义
+        <text class="inter-info">
+          {{
+          helpInfo.Basic_Definition_1 + '\n' 
+        + helpInfo.Basic_Definition_2 + '\n' +
+        helpInfo.Basic_Definition_3 + '\n' +
+        helpInfo.Basic_Definition_4 + '\n' +
+        helpInfo.Basic_Definition_5 + '\n' +
+        helpInfo.Basic_Definition_6 + '\n'}}
+        </text>
+      </view>
+    </view>
+
+    <view class="setting" wx:if="{{showSetting}}">
+      <text class="setting-text1">听写设置</text>
+      <view class="setting-close" bind:tap="closeSetting">
+      </view>
+      <view class="setting-content1">
+        <text class="setting-text2">朗读次数</text>
+        <t-radio-group t-class="horizontal-box" value="{{readCount}}" bind:change="onChange1">
+          <view class="back {{readCount == 1 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readCount == 1 ? 'checked' : ''}}" value="1" label="1次" icon="none" borderless />
+          </view>
+          <view class="back {{readCount == 2 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readCount == 2 ? 'checked' : ''}}" value="2" label="2次" icon="none" borderless />
+          </view>
+          <view class="back {{readCount == 3 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readCount == 3 ? 'checked' : ''}}" value="3" label="3次" icon="none" borderless />
+          </view>
+          <view class="back {{readCount == 4 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readCount == 4 ? 'checked' : ''}}" value="4" label="4次" icon="none" borderless />
+          </view>
+        </t-radio-group>
+      </view>
+      <view class="setting-content2">
+        <text class="setting-text2">朗读间隔</text>
+        <t-radio-group t-class="horizontal-box" value="{{readSpace}}" bind:change="onChange1">
+          <view class="back {{readSpace == 1 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readSpace == 1 ? 'checked' : ''}}" value="1" label="1秒" icon="none" borderless />
+          </view>
+          <view class="back {{readSpace == 2 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readSpace == 2 ? 'checked' : ''}}" value="2" label="4秒" icon="none" borderless />
+          </view>
+          <view class="back {{readSpace == 3 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readSpace == 3 ? 'checked' : ''}}" value="3" label="6秒" icon="none" borderless />
+          </view>
+          <view class="back {{readSpace == 4 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readSpace == 4 ? 'checked' : ''}}" value="4" label="8秒" icon="none" borderless />
+          </view>
+        </t-radio-group>
+      </view>
+      <view class="setting-content3">
+        <text class="setting-text2">听写顺序</text>
+        <t-radio-group t-class="horizontal-box order" value="{{readOrder}}" bind:change="onChange1">
+          <view class="back {{readOrder == 1 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readOrder == 1 ? 'checked' : ''}}" value="1" label="顺序" icon="none" borderless />
+          </view>
+          <view class="back {{readOrder == 2 ? 'checked-back' : ''}}">
+            <t-radio t-class="radio-box" t-class-label="radio-label {{readOrder == 2 ? 'checked' : ''}}" value="2" label="随机" icon="none" borderless />
+          </view>
+        </t-radio-group>
+      </view>
+      <view class="t-form-item">
+        <text class="t-form-item__label">确认</text>
+      </view>
+    </view>
+  </view>
+
+  <l-popup show="{{showresult}}" locked="{{true}}">
+    <view class="popup-all">
+      <view class="popup-container">
+        <view class="popup-header-user"></view>
+        <text class="popup-header-name-user">*******</text>
+        <view class="popup-form">
+          <view>
+            <text class="result-text">本次听写{{'\n'}}
+            分析表已生成</text>
+           <view class="result-png"></view>
+            <view class="to-result-page">
+              <text class="to-result-page-text" bind:tap="toResult">查看</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </l-popup>
+</view>

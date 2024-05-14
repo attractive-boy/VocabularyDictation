@@ -1,0 +1,29 @@
+<!--pages/me/me.wxml-->
+<view class="container">
+    <view class="container-header">
+        <view class="header-back"></view>
+        <view class="header-user-bak"></view>
+        <view class="header-img-border"></view>
+        <view class="header-img"></view>
+        <view class="header-user-name">小明</view>
+        <view class="edit-icon"></view>
+        <view class="user-info-border">
+        <view class="user-info-item">三年级 上册</view>
+        </view>
+    </view>
+    <view class="container-body">
+    <t-grid class="block" t-class="body-grid">
+  <t-grid-item text="日历打卡" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%202.png?sign=3fc69f2e0b5088767cef018c5ab6ea3b&t=1715151219" />
+  <t-grid-item text="汉字收藏" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%204.png?sign=3e13b99001e66df0cba4976845b590a7&t=1715151253" />
+  <t-grid-item text="错字合集" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%204.png?sign=3e13b99001e66df0cba4976845b590a7&t=1715151253" />
+  <t-grid-item text="听写本" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%206.png?sign=39f41fe01dea80806fa26adef5aad55a&t=1715151296" url="/pages/listenbook/listenbook" />
+</t-grid>
+<view class="body-list">
+    <l-list l-class="list-no-arrow list-item" title="教材版本" right-desc="人教版" is-link ="false"/>
+    <l-list l-class="list-item" title="意见反馈" url="/pages/feedback/feedback" />
+    <l-list l-class="list-item" title="设置" url="/pages/setting/setting" />
+    <l-list l-class="list-item" title="邀请好友" />
+    <l-list l-class="list-item" title="关于" url="/pages/about/about"/>
+    </view>
+</view>
+</view>
