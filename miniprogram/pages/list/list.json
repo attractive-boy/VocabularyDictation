@@ -2,6 +2,9 @@
   "component": true,
   "usingComponents": {
     "l-segment":"lin-ui/segment/index",
-    "l-segment-item":"lin-ui/segment-item/index"
+    "l-segment-item":"lin-ui/segment-item/index",
+    "t-collapse": "tdesign-miniprogram/collapse/collapse",
+    "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+    "l-icon":"lin-ui/icon/index"
   }
 }

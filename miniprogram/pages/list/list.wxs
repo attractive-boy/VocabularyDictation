@@ -1,0 +1,18 @@
+// unit.wxs
+
+var filter = {
+  numberToChinese: function (value) {
+    var digits = '零一二三四五六七八九';
+    return digits.charAt(value); // 返回指定位置的字符
+  },
+  hasone: function (value) {
+    console.log(value)
+    return value.indexOf(1) >= 0;
+  },
+};
+
+// 导出对外暴露的属性
+module.exports = {
+  numberToChinese: filter.numberToChinese,
+  hasone:filter.hasone
+};

@@ -305,7 +305,7 @@
   color: rgba(128, 128, 128, 1);
   text-align: left;
   vertical-align: top;
-    z-index: 1;
+  z-index: 1;
   position: absolute;
 }
 
@@ -728,19 +728,29 @@
   background-size: cover;
   position: absolute;
 }
-.t-form-item__label{
-    left: 54.38rpx;
-    top: 17.31rpx;
-    width: 73.08rpx;
-    height: 26.92rpx;
-    opacity: 1;
-    /** 文本1 */
-    font-size: 30.77rpx;
-    font-weight: 500;
-    letter-spacing: 0rpx;
-    line-height: 23.08rpx;
-    color: rgba(255, 255, 255, 1);
-    text-align: left;
-    vertical-align: top;
-    position: absolute;
+.t-form-item__label {
+  left: 54.38rpx;
+  top: 17.31rpx;
+  width: 73.08rpx;
+  height: 26.92rpx;
+  opacity: 1;
+  /** 文本1 */
+  font-size: 30.77rpx;
+  font-weight: 500;
+  letter-spacing: 0rpx;
+  line-height: 23.08rpx;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+  vertical-align: top;
+  position: absolute;
+}
+.collection-active {
+  left: 575rpx;
+  top: 17rpx;
+  width: 61.54rpx;
+  height: 59.62rpx;
+  opacity: 1;
+  position:absolute;
+  background: url('https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%201%20(1).png?sign=a4e09954c474e3a4b403a2003c7aa06e&t=1715685480');
+  background-size: cover;
 }

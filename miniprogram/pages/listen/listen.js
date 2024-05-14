@@ -173,4 +173,36 @@ Page({
       index:this.data.index+1
     })
   },
+  addtocollection(event) {
+    // 获取本地存储中的收藏集合
+    let collection = wx.getStorageSync('collection') || [];
+    let data = this.data.words;
+    let wordToAdd = data[this.data.index];
+    
+    // 检查要添加的 word 是否已经存在于 collection 中
+    let exists = collection.some(item => item.word === wordToAdd.word);
+
+    if (!exists) {
+        // 如果不存在，添加到收藏集合中
+        collection.push(wordToAdd);
+        data[this.data.index]['iscollection'] = true;
+        this.setData({
+            words: data
+        });
+        wx.setStorageSync('collection', collection);
+        wx.showToast({
+            title: '收藏成功',
+            icon: 'success',
+            duration: 2000
+        });
+    } else {
+        // 如果存在，提示已经收藏
+        wx.showToast({
+            title: '已收藏',
+            icon: 'none',
+            duration: 2000
+        });
+    }
+}
+
 })

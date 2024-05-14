@@ -37,7 +37,7 @@
             <view class="listen-content-png">
                 <text class="write-text">规范写法</text>
                 <view class="write-pinyin"><text class="write-pinyin-content">{{words[index].pinyin}}</text></view>
-                <view class="collection"></view>
+                <view class="collection {{words[index].iscollection ? 'collection-active' : ''}}" bindtap="addtocollection"></view>
                 <view class="write-view">
                     <write-panel id="signature" bind:signatureData="handleSignatureData"></write-panel>
                 </view>

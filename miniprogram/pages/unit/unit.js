@@ -326,7 +326,11 @@ Page({
     // 获取目标元素的数据绑定值 
     var index = target.dataset.key;
     var lessonsid = target.dataset.lessonid;
+    var unitidx = target.dataset.unitindex;
     let indexes = [];
+
+    //将当前选中的单元 年级 上下册 存入本地存储
+    wx.setStorageSync('last-unit', {unitindex:unitidx,grade:this.data.grade,term:this.data.term});
 
     for (let i = 0; i < this.data.selectindex[index].length; i++) {
       if (this.data.selectindex[index][i] === 1) {
