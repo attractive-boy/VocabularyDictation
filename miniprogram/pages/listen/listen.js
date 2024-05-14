@@ -16,10 +16,10 @@ Page({
     readOrder: 1,
     showSetting: false,
     Image: '',
-    type:'write',
-    showhelp:false,
-    helpInfo:{},
-    showresult:false
+    type: 'write',
+    showhelp: false,
+    helpInfo: {},
+    showresult: false
   },
 
   /**
@@ -34,9 +34,9 @@ Page({
       relisten
     } = options
     const that = this
-    if(relisten){
+    if (relisten) {
       this.setData({
-        words : getApp().globalData.listenwords
+        words: getApp().globalData.listenwords
       })
       return
     }
@@ -197,7 +197,7 @@ Page({
         console.log('word====>', word)
         if (idx == word.length - 1) {
           that.setData({
-            showresult:true
+            showresult: true
           })
         } else {
           that.setData({
@@ -215,32 +215,32 @@ Page({
     let collection = wx.getStorageSync('collection') || [];
     let data = this.data.words;
     let wordToAdd = data[this.data.index];
-    
+
     // 检查要添加的 word 是否已经存在于 collection 中
     let exists = collection.some(item => item.word === wordToAdd.word);
 
     if (!exists) {
-        // 如果不存在，添加到收藏集合中
-        collection.push(wordToAdd);
-        data[this.data.index]['iscollection'] = true;
-        this.setData({
-            words: data
-        });
-        wx.setStorageSync('collection', collection);
-        wx.showToast({
-            title: '收藏成功',
-            icon: 'success',
-            duration: 2000
-        });
+      // 如果不存在，添加到收藏集合中
+      collection.push(wordToAdd);
+      data[this.data.index]['iscollection'] = true;
+      this.setData({
+        words: data
+      });
+      wx.setStorageSync('collection', collection);
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'success',
+        duration: 2000
+      });
     } else {
-        // 如果存在，提示已经收藏
-        wx.showToast({
-            title: '已收藏',
-            icon: 'none',
-            duration: 2000
-        });
+      // 如果存在，提示已经收藏
+      wx.showToast({
+        title: '已收藏',
+        icon: 'none',
+        duration: 2000
+      });
     }
-}
+  },
 
   play(event) {
     const audio = event.currentTarget.dataset.audio;
@@ -261,9 +261,24 @@ Page({
       success: res => {
         console.log('云函数调用成功', res.result)
         // 在这里处理云函数返回的结果
-        this.setData({
-          showhelp:true,
-          helpInfo: res.result[0]
+        const result = res.result[0];
+        const fileid = `cloud://cloud1-5gyggp5lb23fabcc.636c-cloud1-5gyggp5lb23fabcc-1326102059/汉字/${that.data.words[that.data.index].word}.png`
+        console.log('fileid=====>',fileid)
+        wx.cloud.downloadFile({
+          fileID: fileid,
+          success: res => {
+            // get temp file path
+            console.log(res.tempFilePath)
+            result.Basic_Definition_ImgUrl = res.tempFilePath
+
+            this.setData({
+              showhelp: true,
+              helpInfo: result
+            })
+          },
+          fail: err => {
+            // handle error
+          }
         })
       },
       fail: err => {
@@ -273,12 +288,12 @@ Page({
     })
 
   },
-  closehelp(event){
+  closehelp(event) {
     this.setData({
-      showhelp:false
+      showhelp: false
     })
   },
-  toResult(event){
+  toResult(event) {
     getApp().globalData.listenwords = this.data.words
     // 跳转到另一个页面
     wx.navigateTo({
