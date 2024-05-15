@@ -48,3 +48,7 @@ page {
   .last-position .t-collapse{
       width: 100% !important;
   }
+
+.calendar-header{
+    display: none !important;
+}

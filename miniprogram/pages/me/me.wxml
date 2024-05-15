@@ -13,9 +13,10 @@
     </view>
     <view class="container-body">
     <t-grid class="block" t-class="body-grid">
-  <t-grid-item text="日历打卡" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%202.png?sign=3fc69f2e0b5088767cef018c5ab6ea3b&t=1715151219" />
-  <t-grid-item text="汉字收藏" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%204.png?sign=3e13b99001e66df0cba4976845b590a7&t=1715151253" />
-  <t-grid-item text="错字合集" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%205.png?sign=9afc3be87dfc6a0fccae8432b580c76a&t=1715697949" />
+  <t-grid-item text="日历打卡" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%202.png?sign=3fc69f2e0b5088767cef018c5ab6ea3b&t=1715151219" 
+  url="/pages/calendar/calendar" />
+  <t-grid-item text="汉字收藏" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%204.png?sign=3e13b99001e66df0cba4976845b590a7&t=1715151253" url="/pages/collection/collection" />
+  <t-grid-item text="错字合集" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%205.png?sign=9afc3be87dfc6a0fccae8432b580c76a&t=1715697949" url="/pages/wrong/wrong" />
   <t-grid-item text="听写本" image="https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%206.png?sign=39f41fe01dea80806fa26adef5aad55a&t=1715151296" url="/pages/listenbook/listenbook" />
 </t-grid>
 <view class="body-list">

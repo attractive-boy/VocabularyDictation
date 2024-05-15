@@ -1,18 +1,28 @@
-// pages/collection/collection.js
+// pages/listenbook/listenbook.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    num: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    //获取本地存储
+    var that = this;
+    wx.getStorage({
+      key: 'collection',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          num: res.data.length
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +72,11 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  look(event){
+    //跳转页面
+    wx.navigateTo({
+      url: '/pages/collectionbook/collectionbook',
+    })
   }
 })

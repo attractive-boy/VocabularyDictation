@@ -1,2 +1,21 @@
-<!--pages/collection/collection.wxml-->
-<text>pages/collection/collection.wxml</text>
+<!--pages/listenbook/listenbook.wxml-->
+<view>
+    <view class="listenbook-header">
+        <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+        <view class="listenbook-title">
+            汉字收藏
+        </view>
+        <view class="listenbook-clouds">
+            <view class="book-icon"></view>
+        </view>
+    </view>
+    <view class="listenbook-content">
+        <view class="collection-book">
+        <view class="book-img"></view>
+        <view class="book-title">收藏本1</view>
+        <view class="book-content1">难写、不易懂、巩固听写</view>
+        <view class="book-content2">共收藏<text class="num">{{num}}</text>个汉字</view>
+        </view>
+        <view class="look"><text class="look-text" bind:tap="look">查看</text></view>
+    </view>
+</view>

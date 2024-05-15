@@ -1,0 +1,15 @@
+<!--pages/listenbook/listenbook.wxml-->
+<view>
+    <view class="listenbook-header">
+        <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+        <view class="listenbook-title">
+            错字合集
+        </view>
+        <view class="listenbook-clouds">
+            <view class="book-icon"></view>
+        </view>
+    </view>
+    <view class="listenbook-content">
+       <WeCalendar markCalendarList="{{markCalendarList}}" bind:onRangeDate="onRangeDate" bind:onSelect="onSelect" />
+    </view>
+</view>

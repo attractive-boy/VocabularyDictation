@@ -1,49 +1,33 @@
-// pages/result/result.js
+// pages/listenbook/listenbook.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    rightwords:[],
+    num: 0,
     wrongwords:[],
-    selectall: false
+    selectall: false,
+    canListen:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const words = getApp().globalData.listenwords;
-    const right = words?.filter(word => {
-      return word.isRight;
-    })
-    const wrong = words?.filter(word => {
-      return !word.isRight;
-    })
-    this.addtoWrong(wrong)
-    this.setData({
-      rightwords:right,
-      wrongwords:wrong
-    })
-  },
-  addtoWrong(wrongwords) {
-    // 获取本地存储中的收藏集合
-    let collection = wx.getStorageSync('wrong') || [];
-    // 遍历 wrongwords 数组
-    wrongwords.forEach(wrongword => {
-      // 检查要添加的 word 是否已经存在于 collection 中
-      let exists = collection.some(item => item.word === wrongword.word);
-
-      if (!exists) {
-          // 如果不存在，添加到收藏集合中
-          collection.push(wrongword);
+    //获取本地存储
+    var that = this;
+    wx.getStorage({
+      key: 'wrong',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          wrongwords: res.data
+        })
       }
-  });
-
-  // 更新本地存储
-  wx.setStorageSync('wrong', collection);
+    })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -92,11 +76,6 @@ Page({
   onShareAppMessage() {
 
   },
-  handleBack() {
-    wx.navigateBack({
-      delta: 1 // 返回上一页，delta 表示返回的页面数，1表示返回上一页，2表示返回上两页，以此类推
-    });
-  },
   selectWrong(event){
     let wrongword = this.data.wrongwords;
     const index = event.currentTarget.dataset.idx;
@@ -105,6 +84,20 @@ Page({
       wrongword[index].selected = false
     }
     else{wrongword[index].selected = true}
+    //遍历查看是否可以听写
+    for(let i = 0; i < wrongword.length; i++){
+      if(wrongword[i].selected){
+        this.setData({
+          canListen: true
+        })
+        break
+      }
+      else{
+        this.setData({
+          canListen: false
+        })
+      }
+    }
     
     console.log(wrongword)
     this.setData({
@@ -119,13 +112,14 @@ Page({
   relisten(event){
 
     let words = this.data.wrongwords
-    if(this.selectall){
+    if(this.data.selectall){
       getApp().globalData.listenwords = words
     }else{
-      getApp().globalData.listenwords = words?.filter(word => {
-        return word.selected;
-      })
+      const filteredWords = words.filter(word => word.selected == true || false);
+      console.log('filter==>',filteredWords)
+      getApp().globalData.listenwords = filteredWords
     }
+    console.log(getApp().globalData.listenwords)
     // 构造跳转路径，并将参数传递过去
     
     var url = '/pages/listen/listen?relisten=true';

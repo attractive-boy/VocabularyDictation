@@ -1,0 +1,31 @@
+<!--pages/listenbook/listenbook.wxml-->
+<view>
+    <view class="listenbook-header">
+        <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+        <view class="listenbook-title">
+            汉字收藏
+        </view>
+        <view class="listenbook-clouds">
+            <view class="book-icon"></view>
+        </view>
+    </view>
+    <view class="listenbook-content">
+        <view class="listen-book">
+            <view>
+                <view class="selectall-icon {{ selectall ? 'active' : '' }}" bind:tap="selectall"></view>
+                <text class="selectall-text" bind:tap="selectall">全选</text>
+                <view class="relisten-back {{selectall || canListen ? 'relisten-back-active' : ''}}" bind:tap="relisten">
+                    <text class="relisten-text">听写</text>
+                </view>
+            </view>
+        </view>
+        <view class="listenbook-result">
+            <view class="fonts">
+                <view class="font-bak" wx:for="{{wrongwords}}" wx:key="index" data-idx="{{index}}" bind:tap="selectWrong">
+                    <text class="font-text-wrong">{{item.word}}</text>
+                    <view class="select-listen {{selectall || item.selected ? 'active' : ''}}"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
