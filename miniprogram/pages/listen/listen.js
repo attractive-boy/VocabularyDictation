@@ -293,6 +293,7 @@ Page({
       (that.data.words.length / that.data.words[0].allWordslength) *
       100;
     //发送请求，存储数据
+    var lastUnit = wx.getStorageSync("last-unit");
     // 调用云函数存储数据
     wx.cloud.callFunction({
       name: "addRecords",
@@ -301,7 +302,8 @@ Page({
         startTime: that.data.startTime,
         endTime: endTime,
         accuracy: accuracy,
-        completion: completion
+        completion: completion,
+        unit:lastUnit.unitindex
       },
       success: (res) => {
           // 跳转到另一个页面

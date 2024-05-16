@@ -1,5 +1,5 @@
 <!--pages/listenbook/listenbook.wxml-->
-<view>
+<view class="listenbook">
     <view class="listenbook-header">
         <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
         <view class="listenbook-title">
@@ -11,7 +11,7 @@
     </view>
     <view class="listenbook-content">
         <view class="calendar">
-            <WeCalendar defaultOpen="false" showShrink="{{false}}" goNow="{{false}}" daysWithData="{{daysWithData}}" bind:selectDay="selectDayFun"/>
+            <WeCalendar defaultOpen="false" showShrink="{{false}}" goNow="{{false}}" daysWithData="{{daysWithData}}" bind:selectDay="selectDayFun" />
         </view>
         <view class="study-analyze" wx:if="{{selectDay}}">
             <text class="study-time-text">学习时间</text>
@@ -21,6 +21,24 @@
             <text class="error-text">对错率</text>
             <text class="error-rate-text">{{selectDay.accuracy}} %</text>
         </view>
+        <text class="listenbook-info-title" wx:if="{{selectDay}}">屏幕手写</text>
+        <view class="listenbook-info-header" wx:if="{{selectDay}}">
+            <text class="listenbook-info-text">第一单元：古诗三首</text>
+        </view>
+        <view class="listenbook-result-s" wx:if="{{selectDay}}">
+            <view class="listen-title">听写本</view>
+            <text class='right'>正确</text>
+            <view class="fonts">
+                <view wx:for="{{rightwords}}" wx:key="index" class="font-bak">
+                    <text class="font-text-right">{{item.word}}</text>
+                </view>
+            </view>
+            <text class='wrong'>错误</text>
+            <view class="fonts">
+                <view class="font-bak" wx:for="{{wrongwords}}" wx:key="index" data-idx="{{index}}" bind:tap="selectWrong">
+                    <text class="font-text-wrong">{{item.word}}</text>
+                </view>
+            </view>
+        </view>
     </view>
-    
 </view>

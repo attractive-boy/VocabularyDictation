@@ -7,6 +7,9 @@ Page({
     recordsByDay: {},
     daysWithData: [],
     selectDay: null,
+    infoName:'',
+    rightwords:[],
+    wrongwords:[]
   },
 
   /**
@@ -94,7 +97,18 @@ Page({
     recordsByDay.completion = recordsByDay.completion.toFixed(0);
     recordsByDay.accuracy = recordsByDay.accuracy.toFixed(0);
     
-
+    // 获取所有正确的和错误的单词
+    console.log(recordsByDay)
+    const right = recordsByDay.listenwords?.filter(word => {
+      return word.isRight;
+    })
+    const wrong = recordsByDay.listenwords?.filter(word => {
+      return !word.isRight;
+    })
+    this.setData({
+      rightwords:right,
+      wrongwords:wrong
+    })
     this.setData({
       selectDay: recordsByDay,
     });
