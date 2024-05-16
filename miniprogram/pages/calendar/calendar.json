@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "WeCalendar": "miniprogram-wecalendar"
+    "WeCalendar": "../calendarComponent/calendar"
   }
 }

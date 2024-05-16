@@ -996,12 +996,13 @@ opacity: 1;
 position: absolute;
 }
 .download-png{
-  left: 392.38rpx;
-top: 865.15rpx;
+  left: 400.38rpx;
+top: 885.15rpx;
 width: 26.92rpx;
 height: 32.69rpx;
 opacity: 1;
-background: rgba(29, 29, 29, 1);
+background: url(https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E4%B8%8B%E8%BD%BD.png?sign=ea7d86ff9045336f2b98b3c248f33e12&t=1715828392);
+background-size: cover;
 position: absolute;
 }
 

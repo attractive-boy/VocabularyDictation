@@ -10,6 +10,17 @@
         </view>
     </view>
     <view class="listenbook-content">
-       <WeCalendar markCalendarList="{{markCalendarList}}" bind:onRangeDate="onRangeDate" bind:onSelect="onSelect" />
+        <view class="calendar">
+            <WeCalendar defaultOpen="false" showShrink="{{false}}" goNow="{{false}}" daysWithData="{{daysWithData}}" bind:selectDay="selectDayFun"/>
+        </view>
+        <view class="study-analyze" wx:if="{{selectDay}}">
+            <text class="study-time-text">学习时间</text>
+            <text class="time-text">{{selectDay.startTime + '\n'}}-{{'\n' + selectDay.endTime}}</text>
+            <text class="finish-text">完成度</text>
+            <text class="finish-rate-text">{{selectDay.completion}} %</text>
+            <text class="error-text">对错率</text>
+            <text class="error-rate-text">{{selectDay.accuracy}} %</text>
+        </view>
     </view>
+    
 </view>

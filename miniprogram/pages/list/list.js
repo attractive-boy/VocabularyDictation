@@ -477,7 +477,7 @@ Component({
       let indexes = [];
   
       //将当前选中的单元 年级 上下册 存入本地存储
-      wx.setStorageSync('last-unit', {unitindex:this.data.unitindex,grade:this.data.grade,term:this.data.term});
+      wx.setStorageSync('last-unit', {unitindex:this.data.unitindex,grade:this.data.grade,term:this.data.term,name:this.data.unitlist[index].lessonName});
   
       for (let i = 0; i < this.data.selectindex[index].length; i++) {
         if (this.data.selectindex[index][i] === 1) {
