@@ -12,7 +12,7 @@
     <view class="listenbook-content">
         <view class="listenbook-content-png"></view>
     </view>
-    <view class="listenbook-download">
+    <view class="listenbook-download" bind:tap="download">
     下载模板
     </view>
 </view>

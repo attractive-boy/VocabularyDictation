@@ -44,7 +44,7 @@
         <text class="write-notes" wx:if="{{selected == 'selected'}}">写在田字格内</text>
         <view wx:if="{{selected == 'selected'}}" class="tips" bind:tap="help"><text class="tips-text">提示</text></view>
         <view class="only-listen"  wx:if="{{selected_update == 'selected'}}" ></view>
-        <view class="download-text"  wx:if="{{selected_update == 'selected'}}" >下载模板</view>
+        <view class="download-text"  wx:if="{{selected_update == 'selected'}}" bind:tap="download">下载模板</view>
         <view class="download-png"  wx:if="{{selected_update == 'selected'}}" ></view>
       </view>
 
@@ -56,11 +56,11 @@
 
         <text class="progress-text">{{index + 1}}/{{words.length}}</text>
         <view class="oprater-left {{index == 0 ? 'noleft' : ''}}" bindtap="pre"></view>
-        <view class="oprater-continue" wx:if="pause" bind:tap="play" data-audio="{{words[index].audioUrl}}"></view>
-        <view class="oprater-pause" wx:else></view>
+        <view class="oprater-continue" wx:if="{{pause}}" bind:tap="play" data-audio="{{words[index].audioUrl}}"></view>
+        <view class="oprater-pause" wx:if="{{!pause}}"></view>
         <view class="oprater-right {{index == words.length - 1 ? 'noright' : ''}}" bind:tap="next"></view>
       </view>
-      <view wx:if="{{selected_update == 'selected'}}" class="upload-png">
+      <view wx:if="{{selected_update == 'selected'}}" class="upload-png" bind:tap="upload">
         <text class="upload-text">上传听写内容</text>
       </view>
     </view>

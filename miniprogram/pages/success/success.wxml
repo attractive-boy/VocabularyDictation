@@ -1,0 +1,13 @@
+<!--pages/listenbook/listenbook.wxml-->
+<view>
+    <view class="listenbook-header">
+        <t-navbar class="block" left-arrow bind:go-back="handleBack" t-class="navbar" />
+    </view>
+    <view class="sucess-png"></view>
+    <view class="sucess-title">上传成功</view>
+    <view class="sucess-desc">详情可在日历打卡中查看</view>
+
+    <view class="desc-back" bind:tap="todesc">
+   <text class="look-desc">查看详情</text> 
+    </view>
+</view>

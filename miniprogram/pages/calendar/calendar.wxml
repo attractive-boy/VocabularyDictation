@@ -21,9 +21,11 @@
             <text class="error-text">对错率</text>
             <text class="error-rate-text">{{selectDay.accuracy}} %</text>
         </view>
-        <text class="listenbook-info-title" wx:if="{{selectDay}}">屏幕手写</text>
+        <text class="listenbook-info-title" wx:if="{{selectDay && !onlyRead}}">屏幕手写</text>
+        <text class="listenbook-info-title" wx:if="{{selectDay && onlyRead}}">仅听写</text>
+        <view wx:if="{{!onlyRead}}">
         <view class="listenbook-info-header" wx:if="{{selectDay}}">
-            <text class="listenbook-info-text">第一单元：古诗三首</text>
+            <text class="listenbook-info-text">第{{unit}}单元：{{lessonName}}</text>
         </view>
         <view class="listenbook-result-s" wx:if="{{selectDay}}">
             <view class="listen-title">听写本</view>
@@ -41,6 +43,10 @@
             </view>
             <view class="analyze-png"></view>
         </view>
+      </view>
+      <view wx:if="{{onlyRead}}">
+      <image class="onlyread-img" src="{{onlyRead}}"></image>
+      </view>
         
     </view>
 </view>

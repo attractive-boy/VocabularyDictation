@@ -21,7 +21,9 @@ exports.main = async (event, context) => {
         startTime: event.startTime,
         endTime: event.endTime,
         accuracy: event.accuracy,
-        completion: event.completion
+        completion: event.completion,
+        unit:event.unit,
+        cloudpng:event.cloudpng
       }
     })
     return {

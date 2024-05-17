@@ -1,0 +1,76 @@
+/* pages/listenbook/listenbook.wxss */
+
+.navbar .t-navbar__content {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+.sucess-png {
+  left: 294.23rpx;
+  top: 455.77rpx;
+  width: 163.46rpx;
+  height: 157.69rpx;
+  opacity: 1;
+  position: absolute;
+  background: url(https://636c-cloud1-5gyggp5lb23fabcc-1326102059.tcb.qcloud.la/%E7%94%BB%E6%9D%BF%20555.png?sign=9df17a9e938e2c4c7fb975f2ab41dae6&t=1715954767);
+  background-size: cover;
+}
+.sucess-title{
+  left: 275rpx;
+top: 651.92rpx;
+width: 201.92rpx;
+height: 65.38rpx;
+opacity: 1;
+/** 文本1 */
+font-size: 46.15rpx;
+font-weight: 500;
+letter-spacing: 0rpx;
+line-height: 64.62rpx;
+color: rgba(0, 0, 0, 1);
+text-align: left;
+vertical-align: top;
+position: absolute;
+}
+.sucess-desc{
+  left: 180.77rpx;
+top: 734.62rpx;
+width: 388.46rpx;
+height: 38.46rpx;
+opacity: 1;
+/** 文本1 */
+font-size: 34.62rpx;
+font-weight: 400;
+letter-spacing: 0rpx;
+line-height: 48.46rpx;
+color: rgba(56, 56, 56, 1);
+text-align: left;
+vertical-align: top;
+position: absolute;
+}
+.desc-back{
+  left: 226.92rpx;
+top: 834.62rpx;
+width: 296.15rpx;
+height: 84.62rpx;
+opacity: 1;
+background: url(https://img.js.design/assets/img/66179486fdbe3d13f2d924aa.png#8e279675fd4806ac1f988b382a0f08e5);
+background-size: cover;
+position: absolute;
+}
+.look-desc{
+  left: 71.08rpx;
+top: 15rpx;
+width: 153.85rpx;
+height: 53.85rpx;
+opacity: 1;
+/** 文本1 */
+font-size: 38.46rpx;
+font-weight: 400;
+letter-spacing: 0rpx;
+line-height: 53.85rpx;
+color: rgba(255, 255, 255, 1);
+text-align: left;
+vertical-align: top;
+position: absolute;
+}

@@ -164,7 +164,7 @@ Page({
   },
   next() {
     const component = this.selectComponent("#signature");
-    component.canvasClear();
+    component && component.canvasClear();
     const imageBase64 = this.data.Image.replace(/^data:image\/\w+;base64,/, "");
     //判断当前图片是否正确
     // 使用微信小程序的 wx.request() 发送网络请求
@@ -230,6 +230,9 @@ Page({
   },
 
   play(event) {
+    this.setData({
+      pause: false
+    })
     const audio = event.currentTarget.dataset.audio;
     const innerAudioContext = wx.createInnerAudioContext({
       useWebAudioImplement: true, // 是否使用 WebAudio 作为底层音频驱动，默认关闭。对于短音频、播放频繁的音频建议开启此选项，开启后将获得更优的性能表现。由于开启此选项后也会带来一定的内存增长，因此对于长音频建议关闭此选项
@@ -237,6 +240,12 @@ Page({
     innerAudioContext.src = audio;
     innerAudioContext.play(); // 播放
     //innerAudioContext.destroy()
+    const that = this
+    setTimeout(()=>{ 
+      that.setData({
+        pause: true
+      })
+    }, 2000); 
   },
   help(event) {
     const that = this;
@@ -253,17 +262,21 @@ Page({
           that.data.words[that.data.index].word
         }.png`;
         console.log("fileid=====>", fileid);
+        that.setData({
+          showhelp: true,
+          helpInfo: result,
+        });
         wx.cloud.downloadFile({
           fileID: fileid,
           success: (res) => {
             // get temp file path
             console.log(res.tempFilePath);
             result.Basic_Definition_ImgUrl = res.tempFilePath;
-
-            this.setData({
+            that.setData({
               showhelp: true,
               helpInfo: result,
             });
+
           },
           fail: (err) => {
             // handle error
@@ -314,6 +327,96 @@ Page({
       fail: (err) => {
         console.error("云函数调用失败", err);
       },
+    });
+  },
+  download(event){
+    // 获取要保存的图片地址，假设为 imageUrl
+  const imageUrl = 'https://img.js.design/assets/img/661e3e6e4eb2224151693763.png#526355d3ab2231e06724ad128ae8927e';
+
+  wx.downloadFile({
+    url: imageUrl,
+    success: (res) => {
+      if (res.statusCode === 200) {
+        // 下载成功，保存到相册
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: (saveRes) => {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success'
+            });
+          },
+          fail: (saveErr) => {
+            console.error('保存失败', saveErr);
+          }
+        });
+      } else {
+        console.error('下载失败', res);
+      }
+    },
+    fail: (downloadErr) => {
+      console.error('下载失败', downloadErr);
+    }
+  });
+  },
+  upload(event){
+    getApp().globalData.listenwords = this.data.words;
+    const that = this;
+    const endTime = new Date();
+    const accuracy =
+      (that.data.words.filter((item) => item.isRight).length /
+        that.data.words.length) *
+      100;
+      const completion =
+      (that.data.words.length / that.data.words[0].allWordslength) *
+      100;
+    //发送请求，存储数据
+    var lastUnit = wx.getStorageSync("last-unit");
+    // 调用云函数存储数据
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'], // 仅允许选择图片
+      sourceType: ['album', 'camera'], // 允许从相册和相机选择
+      success: (chooseRes) => {
+        const tempFilePaths = chooseRes.tempFiles.map(file => file.tempFilePath);
+        // 将图片上传到云存储
+        wx.cloud.uploadFile({
+          cloudPath: 'images/' + new Date().getTime() + '.png', // 上传至云端的路径
+          filePath: tempFilePaths[0], // 小程序临时文件路径
+          success: (uploadRes) => {
+            console.log('上传成功', uploadRes);
+            // 获取图片在云存储中的地址
+            const imageUrl = uploadRes.fileID;
+            wx.cloud.callFunction({
+              name: "addRecords",
+              data: {
+                listenwords: that.data.words,
+                startTime: that.data.startTime,
+                endTime: endTime,
+                accuracy: accuracy,
+                completion: completion,
+                unit:lastUnit.unitindex,
+                cloudpng: imageUrl
+              },
+              success: (res) => {
+                  // 跳转到另一个页面
+                  wx.navigateTo({
+                    url: "/pages/success/success",
+                  });
+              },
+              fail: (err) => {
+                console.error("云函数调用失败", err);
+              },
+            });
+          },
+          fail: (uploadErr) => {
+            console.error('上传失败', uploadErr);
+          }
+        });
+      },
+      fail: (chooseErr) => {
+        console.error('选择图片失败', chooseErr);
+      }
     });
   }
 });

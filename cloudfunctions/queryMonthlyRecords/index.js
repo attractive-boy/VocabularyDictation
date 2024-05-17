@@ -35,7 +35,9 @@ exports.main = async (event, context) => {
         startTime: record.startTime,
         endTime: record.endTime,
         accuracy: record.accuracy,
-        completion: record.completion
+        completion: record.completion,
+        unit:record.unit,
+        cloudpng:record.cloudpng
       })
     })
 

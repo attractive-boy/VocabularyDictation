@@ -9,7 +9,10 @@ Page({
     selectDay: null,
     infoName:'',
     rightwords:[],
-    wrongwords:[]
+    wrongwords:[],
+    lessonName:"",
+    unit:"",
+    onlyRead: false
   },
 
   /**
@@ -27,6 +30,7 @@ Page({
           this.setData({
             recordsByDay: res.result.recordsByDay,
             daysWithData: res.result.daysWithData,
+            // onlyRead: 
           });
           const now = new Date();
           const day = now.getDate();
@@ -105,9 +109,13 @@ Page({
     const wrong = recordsByDay.listenwords?.filter(word => {
       return !word.isRight;
     })
+    const that = this
     this.setData({
       rightwords:right,
-      wrongwords:wrong
+      wrongwords:wrong,
+      lessonName:recordsByDay.listenwords[0].lessonName,
+      unit:that.numberToChinese(recordsByDay.unit + 1),
+      onlyRead: recordsByDay.cloudpng
     })
     this.setData({
       selectDay: recordsByDay,
@@ -117,7 +125,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {},
-
+  numberToChinese(num) {
+    const digits = '零一二三四五六七八九';
+    const units = ['', '十', '百', '千', '万'];
+    console.log(num)
+    const digitArr = num.toString().split('').reverse();
+    let result = '';
+    
+    for (let i = 0; i < digitArr.length; i++) {
+      const digit = digitArr[i];
+      result = digits[digit] + units[i] + result;
+    }
+  
+    // 处理零的情况
+    result = result.replace(/零[十百千]/g, '零').replace(/零+/g, '零');
+    result = result.replace(/^零/, '');
+  
+    return result;
+  },
   /**
    * 生命周期函数--监听页面显示
    */

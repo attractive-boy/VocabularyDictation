@@ -780,3 +780,13 @@
 .listenbook {
     height: 150vh;
 }
+.onlyread-img{
+  left: 38.46rpx;
+top: 1037.31rpx;
+width: 250rpx;
+height: 355.77rpx;
+opacity: 1;
+background-size: cover;
+box-shadow: 0rpx 3.85rpx 7.69rpx  rgba(255, 141, 26, 0.4);
+position: absolute;
+}

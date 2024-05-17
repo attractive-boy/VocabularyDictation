@@ -251,7 +251,7 @@ position:absolute;
   background: url(https://img.js.design/assets/img/65fbd4080a616b39e7635870.png#077eb8f36e0edfb30ab7f67c504fe805);
   background-size: cover;
   position: relative;
-  margin-right: 56rpx;
+  margin-right: 41rpx;
 }
 
 .font-text-right {

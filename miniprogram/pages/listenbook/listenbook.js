@@ -62,5 +62,35 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  download(event){
+    // 获取要保存的图片地址，假设为 imageUrl
+  const imageUrl = 'https://img.js.design/assets/img/661e3e6e4eb2224151693763.png#526355d3ab2231e06724ad128ae8927e';
+
+  wx.downloadFile({
+    url: imageUrl,
+    success: (res) => {
+      if (res.statusCode === 200) {
+        // 下载成功，保存到相册
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: (saveRes) => {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success'
+            });
+          },
+          fail: (saveErr) => {
+            console.error('保存失败', saveErr);
+          }
+        });
+      } else {
+        console.error('下载失败', res);
+      }
+    },
+    fail: (downloadErr) => {
+      console.error('下载失败', downloadErr);
+    }
+  });
   }
 })
