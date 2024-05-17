@@ -39,6 +39,8 @@
                     <text class="font-text-wrong">{{item.word}}</text>
                 </view>
             </view>
+            <view class="analyze-png"></view>
         </view>
+        
     </view>
 </view>

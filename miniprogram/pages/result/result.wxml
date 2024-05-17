@@ -31,6 +31,7 @@
       </view>
       
     </view>
+    <view class="analyze-png"></view>
   </view>
 
 </view>
